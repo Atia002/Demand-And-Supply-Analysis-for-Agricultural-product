@@ -1,5 +1,8 @@
-// Initialize Charts
+// Load data and initialize charts
 document.addEventListener('DOMContentLoaded', function() {
+    // Load products and other data
+    loadProducts();
+    setupFormHandlers();
     // Demand Chart
     const demandCtx = document.getElementById('demandChart').getContext('2d');
     const demandChart = new Chart(demandCtx, {
