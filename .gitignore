@@ -1,0 +1,32 @@
+# Dependencies
+/node_modules
+/vendor
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# PHP files
+/handlers/config.php
+*.cache
+
+# Temporary files
+*.tmp
+*.temp

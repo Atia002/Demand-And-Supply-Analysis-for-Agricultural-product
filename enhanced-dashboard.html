@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriAnalytics Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/enhanced-style.css">
+</head>
+<body>
+    <!-- Enhanced Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-leaf me-2"></i>AgriAnalytics
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#analytics">Analytics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#market">Market</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reports">Reports</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i>John Doe
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user-cog me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-4">
+        <!-- Welcome Banner -->
+        <div class="welcome-banner mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h2 class="mb-3">Welcome to AgriAnalytics</h2>
+                    <p class="mb-0">Your comprehensive agricultural demand and supply analysis platform</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <i class="fas fa-chart-line fa-4x opacity-50"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats Grid -->
+        <div class="stat-grid">
+            <div class="stat-card bg-primary">
+                <div class="stat-content">
+                    <h3 class="h2 mb-3">₹25,480</h3>
+                    <p class="mb-0">Daily Revenue</p>
+                    <i class="fas fa-coins stat-icon"></i>
+                </div>
+            </div>
+            <div class="stat-card bg-success">
+                <div class="stat-content">
+                    <h3 class="h2 mb-3">156</h3>
+                    <p class="mb-0">Active Products</p>
+                    <i class="fas fa-box stat-icon"></i>
+                </div>
+            </div>
+            <div class="stat-card bg-info">
+                <div class="stat-content">
+                    <h3 class="h2 mb-3">48</h3>
+                    <p class="mb-0">New Orders</p>
+                    <i class="fas fa-shopping-cart stat-icon"></i>
+                </div>
+            </div>
+            <div class="stat-card bg-warning">
+                <div class="stat-content">
+                    <h3 class="h2 mb-3">92%</h3>
+                    <p class="mb-0">Stock Capacity</p>
+                    <i class="fas fa-warehouse stat-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-8">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Market Analysis</h5>
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-outline-secondary active">Week</button>
+                            <button class="btn btn-sm btn-outline-secondary">Month</button>
+                            <button class="btn btn-sm btn-outline-secondary">Year</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="marketAnalysisChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Product Distribution</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="productDistributionChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity & Weather -->
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Recent Activity</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">New order received</h6>
+                                    <small>3 mins ago</small>
+                                </div>
+                                <p class="mb-1">Order #123 - 500kg Rice</p>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Stock Update</h6>
+                                    <small>1 hour ago</small>
+                                </div>
+                                <p class="mb-1">Wheat stock updated to 1200kg</p>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Price Change Alert</h6>
+                                    <small>2 hours ago</small>
+                                </div>
+                                <p class="mb-1">Vegetable prices updated</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Weather Forecast</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-4">
+                                <div class="text-center">
+                                    <i class="fas fa-sun fa-2x text-warning mb-2"></i>
+                                    <h6>Today</h6>
+                                    <p class="mb-0">32°C</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-center">
+                                    <i class="fas fa-cloud fa-2x text-info mb-2"></i>
+                                    <h6>Tomorrow</h6>
+                                    <p class="mb-0">28°C</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-center">
+                                    <i class="fas fa-cloud-rain fa-2x text-primary mb-2"></i>
+                                    <h6>Saturday</h6>
+                                    <p class="mb-0">25°C</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Initialize Charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Market Analysis Chart
+            const marketCtx = document.getElementById('marketAnalysisChart').getContext('2d');
+            new Chart(marketCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Demand',
+                        data: [65, 59, 80, 81, 56, 55, 70],
+                        borderColor: '#2ecc71',
+                        tension: 0.4,
+                        fill: false
+                    }, {
+                        label: 'Supply',
+                        data: [28, 48, 40, 19, 86, 27, 90],
+                        borderColor: '#3498db',
+                        tension: 0.4,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    }
+                }
+            });
+
+            // Product Distribution Chart
+            const productCtx = document.getElementById('productDistributionChart').getContext('2d');
+            new Chart(productCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Grains', 'Vegetables', 'Fruits', 'Others'],
+                    datasets: [{
+                        data: [40, 25, 20, 15],
+                        backgroundColor: ['#2ecc71', '#3498db', '#e74c3c', '#f1c40f']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

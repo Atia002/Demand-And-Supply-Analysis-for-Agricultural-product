@@ -1,0 +1,281 @@
+/* Global Styles */
+:root {
+    --primary-color: #2c8f4c;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --light-bg: #f8f9fa;
+    --dark-bg: #343a40;
+    --box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: var(--light-bg);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+.main-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #236b3a 100%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white !important;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+/* Dashboard Section */
+.dashboard-section .card {
+    transition: var(--transition);
+    border: none;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.dashboard-section .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.dashboard-section .card-title {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.dashboard-section .display-4 {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+/* Products Section */
+.products-section .table {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.products-section .table th {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px;
+}
+
+.products-section .btn-sm {
+    margin: 0 3px;
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+}
+
+/* Warehouses Section */
+.warehouses-section .card {
+    height: 100%;
+    border: none;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.warehouses-section .card:hover {
+    transform: translateY(-5px);
+}
+
+.warehouses-section .progress {
+    height: 10px;
+    border-radius: 5px;
+    background-color: #e9ecef;
+}
+
+.warehouses-section .progress-bar {
+    background: linear-gradient(90deg, var(--primary-color) 0%, #236b3a 100%);
+}
+
+/* Market Analysis Section */
+.market-analysis-section .card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+}
+
+.market-analysis-section canvas {
+    margin-top: 20px;
+}
+
+/* Crop Database Section */
+.crop-database-section .card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+}
+
+.crop-database-section .table {
+    margin-bottom: 0;
+}
+
+/* Modal Styles */
+.modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #236b3a 100%);
+    color: white;
+    border-radius: 15px 15px 0 0;
+    padding: 1.5rem;
+}
+
+.modal-header .btn-close {
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+    transition: var(--transition);
+}
+
+.modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+/* Button Styles */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #236b3a 100%);
+    border: none;
+    border-radius: 10px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #236b3a 0%, var(--primary-color) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(35, 107, 58, 0.3);
+}
+
+/* Table Styles */
+.table thead th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+    transition: var(--transition);
+}
+
+.table tbody tr:hover {
+    background-color: rgba(44, 143, 76, 0.05);
+}
+
+/* Badge Styles */
+.badge {
+    padding: 0.6em 1.2em;
+    border-radius: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--dark-bg);
+    color: white;
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+footer a:hover {
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-section .card,
+    .market-analysis-section .card {
+        margin-bottom: 1rem;
+    }
+    
+    .table-responsive {
+        border-radius: 15px;
+        box-shadow: var(--box-shadow);
+    }
+    
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dashboard-section,
+.products-section,
+.warehouses-section,
+.market-analysis-section,
+.crop-database-section {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #236b3a;
+}

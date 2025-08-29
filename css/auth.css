@@ -1,0 +1,126 @@
+/* Auth Pages Styling */
+.auth-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #2c8f4c 0%, #1a5f31 100%);
+    padding: 20px;
+}
+
+.auth-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.auth-card .fas.fa-leaf {
+    color: #2c8f4c;
+}
+
+.auth-card h2 {
+    color: #2c8f4c;
+    font-weight: 600;
+}
+
+.auth-card .input-group-text {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    color: #6c757d;
+}
+
+.auth-card .form-control {
+    border: 1px solid #ced4da;
+    padding: 12px;
+    height: auto;
+}
+
+.auth-card .form-control:focus {
+    border-color: #2c8f4c;
+    box-shadow: 0 0 0 0.2rem rgba(44, 143, 76, 0.25);
+}
+
+.auth-card .btn-primary {
+    background: linear-gradient(135deg, #2c8f4c 0%, #236b3a 100%);
+    border: none;
+    padding: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.auth-card .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(35, 107, 58, 0.3);
+}
+
+.auth-card a {
+    color: #2c8f4c;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.auth-card a:hover {
+    color: #236b3a;
+}
+
+.form-check-input:checked {
+    background-color: #2c8f4c;
+    border-color: #2c8f4c;
+}
+
+.form-select {
+    height: auto;
+    padding: 12px;
+}
+
+.form-select:focus {
+    border-color: #2c8f4c;
+    box-shadow: 0 0 0 0.2rem rgba(44, 143, 76, 0.25);
+}
+
+/* Animation */
+.auth-card {
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .auth-card {
+        padding: 20px;
+    }
+}
+
+/* Field Transitions */
+.dynamic-fields {
+    transition: all 0.3s ease;
+}
+
+/* Error States */
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 0.875rem;
+}
+
+/* Success States */
+.is-valid {
+    border-color: #28a745 !important;
+}
+
+.valid-feedback {
+    color: #28a745;
+    font-size: 0.875rem;
+}

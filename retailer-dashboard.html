@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retailer Dashboard - Agricultural System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-store me-2"></i>Retailer Dashboard
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#inventory">Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sales">Sales</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#orders">Orders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#customers">Customers</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <span class="text-light me-3">Store Type: <span id="storeType">Supermarket</span></span>
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i>
+                            <span id="retailerName">Retailer Name</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user-cog me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-store-alt me-2"></i>Store Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="login.html"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid mt-4">
+        <!-- Overview Cards -->
+        <section id="dashboard" class="mb-4">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Daily Sales</h5>
+                            <h3 class="mb-0">₹25,480</h3>
+                            <small>+12% from yesterday</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Products in Stock</h5>
+                            <h3 class="mb-0">156</h3>
+                            <small>15 low stock alerts</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card bg-info text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Today's Orders</h5>
+                            <h3 class="mb-0">48</h3>
+                            <small>32 completed</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Customer Visits</h5>
+                            <h3 class="mb-0">234</h3>
+                            <small>+5% this week</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sales Analytics -->
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Sales Analytics</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="salesChart" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Top Selling Products</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Organic Rice</h6>
+                                        <span class="badge bg-success">485 units</span>
+                                    </div>
+                                    <small class="text-muted">₹24,250 in sales</small>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Fresh Vegetables</h6>
+                                        <span class="badge bg-success">380 units</span>
+                                    </div>
+                                    <small class="text-muted">₹19,000 in sales</small>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inventory Management -->
+        <section id="inventory" class="mb-4">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">Inventory Management</h5>
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                        <i class="fas fa-plus me-1"></i>Add Product
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Product ID</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Stock</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Will be populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Analytics -->
+        <section id="customers" class="mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Customer Analytics</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <canvas id="customerChart" height="300"></canvas>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Customer Feedback Summary</h6>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-success" style="width: 65%">Excellent (65%)</div>
+                            </div>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-info" style="width: 20%">Good (20%)</div>
+                            </div>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-warning" style="width: 10%">Average (10%)</div>
+                            </div>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-danger" style="width: 5%">Poor (5%)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div class="modal fade" id="addProductModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addProductForm">
+                        <div class="mb-3">
+                            <label class="form-label">Product Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <select class="form-select" required>
+                                <option value="">Select Category</option>
+                                <option value="Grains">Grains</option>
+                                <option value="Vegetables">Vegetables</option>
+                                <option value="Fruits">Fruits</option>
+                                <option value="Dairy">Dairy</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Initial Stock</label>
+                            <input type="number" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Price per Unit</label>
+                            <input type="number" step="0.01" class="form-control" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" form="addProductForm" class="btn btn-primary">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Initialize Charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sales Chart
+            const salesCtx = document.getElementById('salesChart').getContext('2d');
+            new Chart(salesCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Monthly Sales',
+                        data: [12500, 15000, 17500, 16000, 19000, 22000],
+                        borderColor: '#2c8f4c',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Monthly Sales Trend'
+                        }
+                    }
+                }
+            });
+
+            // Customer Chart
+            const customerCtx = document.getElementById('customerChart').getContext('2d');
+            new Chart(customerCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['New', 'Regular', 'VIP'],
+                    datasets: [{
+                        data: [30, 50, 20],
+                        backgroundColor: ['#17a2b8', '#28a745', '#ffc107']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Customer Segments'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

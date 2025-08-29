@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Registration - Agricultural System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Vendor Registration</h4>
+            </div>
+            <div class="card-body">
+                <form id="vendorRegistrationForm">
+                    <!-- Common Vendor Fields (Supertype) -->
+                    <div class="common-fields">
+                        <h5 class="mb-3">Basic Information</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">License ID</label>
+                                    <input type="text" class="form-control" name="licenseID" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control" name="name" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Address</label>
+                            <textarea class="form-control" name="address" rows="2" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Registration Date</label>
+                            <input type="date" class="form-control" name="regDate" required>
+                        </div>
+                        
+                        <!-- Vendor Type Selection (Disjoint Constraint) -->
+                        <div class="mb-4">
+                            <label class="form-label">Vendor Type</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="vendorType" value="wholesaler" id="typeWholesaler" required>
+                                <label class="form-check-label" for="typeWholesaler">Wholesaler</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="vendorType" value="retailer" id="typeRetailer">
+                                <label class="form-check-label" for="typeRetailer">Retailer</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wholesaler Specific Fields (Subtype) -->
+                    <div id="wholesalerFields" style="display: none;">
+                        <h5 class="mb-3">Wholesaler Information</h5>
+                        <div class="mb-3">
+                            <label class="form-label">Minimum Order Quantity</label>
+                            <input type="number" class="form-control" name="minOrderQuantity">
+                        </div>
+                    </div>
+
+                    <!-- Retailer Specific Fields (Subtype) -->
+                    <div id="retailerFields" style="display: none;">
+                        <h5 class="mb-3">Retailer Information</h5>
+                        <div class="mb-3">
+                            <label class="form-label">Store Type</label>
+                            <select class="form-select" name="storeType">
+                                <option value="">Select Store Type</option>
+                                <option value="Supermarket">Supermarket</option>
+                                <option value="Corner Shop">Corner Shop</option>
+                                <option value="Market Stall">Market Stall</option>
+                                <option value="Specialty Store">Specialty Store</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Register Vendor</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Handle vendor type selection to show/hide specific fields
+        document.querySelectorAll('input[name="vendorType"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('wholesalerFields').style.display = 'none';
+                document.getElementById('retailerFields').style.display = 'none';
+                
+                if (this.value === 'wholesaler') {
+                    document.getElementById('wholesalerFields').style.display = 'block';
+                } else if (this.value === 'retailer') {
+                    document.getElementById('retailerFields').style.display = 'block';
+                }
+            });
+        });
+
+        // Form submission handler
+        document.getElementById('vendorRegistrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const vendorData = {
+                licenseID: formData.get('licenseID'),
+                name: formData.get('name'),
+                address: formData.get('address'),
+                regDate: formData.get('regDate'),
+                vendorType: formData.get('vendorType')
+            };
+
+            // Add subtype-specific data
+            if (vendorData.vendorType === 'wholesaler') {
+                vendorData.minOrderQuantity = formData.get('minOrderQuantity');
+            } else if (vendorData.vendorType === 'retailer') {
+                vendorData.storeType = formData.get('storeType');
+            }
+
+            console.log('Vendor Data:', vendorData);
+            // Here you'll add the code to send this data to your PHP handler
+        });
+    </script>
+</body>
+</html>

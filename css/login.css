@@ -1,0 +1,113 @@
+/* Login Page Styles */
+.login-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #2c8f4c 0%, #1a5f31 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-box {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.login-title {
+    color: #2c8f4c;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.login-subtitle {
+    color: #6c757d;
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+.login-form .form-control {
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    transition: all 0.3s ease;
+}
+
+.login-form .form-control:focus {
+    border-color: #2c8f4c;
+    box-shadow: 0 0 0 0.2rem rgba(44, 143, 76, 0.25);
+}
+
+.login-form .btn-primary {
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.login-form .btn-primary:hover {
+    background-color: #236b3a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(35, 107, 58, 0.3);
+}
+
+.form-check-input:checked {
+    background-color: #2c8f4c;
+    border-color: #2c8f4c;
+}
+
+.login-box a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-box a:hover {
+    color: #236b3a !important;
+}
+
+/* Animation */
+.login-box {
+    animation: loginFadeIn 0.6s ease-out;
+}
+
+@keyframes loginFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .login-box {
+        padding: 20px;
+    }
+    
+    .login-title {
+        font-size: 2rem;
+    }
+}
+
+/* Custom Form Elements */
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-check-input {
+    width: 1.2em;
+    height: 1.2em;
+    margin-top: 0;
+}

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultural Demand and Supply Analysis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-leaf me-2"></i>AgriAnalytics
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#warehouses">Warehouses</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#market-analysis">Market Analysis</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#crop-database">Crop Database</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mt-4">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="dashboard-section">
+            <h2 class="mb-4">Dashboard</h2>
+            
+            <!-- Overview Stats -->
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="card-title">Total Products</h6>
+                                    <h2 class="mb-0">1,234</h2>
+                                    <small>+15% from last month</small>
+                                </div>
+                                <i class="fas fa-box fa-2x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="card-title">Active Markets</h6>
+                                    <h2 class="mb-0">85</h2>
+                                    <small>+5 new this week</small>
+                                </div>
+                                <i class="fas fa-store fa-2x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-info text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="card-title">Total Farmers</h6>
+                                    <h2 class="mb-0">456</h2>
+                                    <small>Active producers</small>
+                                </div>
+                                <i class="fas fa-users fa-2x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="card-title">Storage Capacity</h6>
+                                    <h2 class="mb-0">75%</h2>
+                                    <small>Current utilization</small>
+                                </div>
+                                <i class="fas fa-warehouse fa-2x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Analytics Charts -->
+            <div class="row">
+
+                <!-- Quick Stats -->
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <div class="card border-primary">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="text-muted mb-2">Today's Trading Volume</h6>
+                                            <h3 class="mb-0">₹24.5M</h3>
+                                            <small class="text-success">+12.5% <i class="fas fa-arrow-up"></i></small>
+                                        </div>
+                                        <div class="bg-primary bg-opacity-10 rounded-circle p-3">
+                                            <i class="fas fa-chart-line text-primary fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <div class="card border-success">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="text-muted mb-2">Active Markets</h6>
+                                            <h3 class="mb-0">85</h3>
+                                            <small class="text-success">+5 new today <i class="fas fa-arrow-up"></i></small>
+                                        </div>
+                                        <div class="bg-success bg-opacity-10 rounded-circle p-3">
+                                            <i class="fas fa-store text-success fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Search Section -->
+        <section id="search-section" class="mb-4">
+            <div class="card">
+                <div class="card-header bg-white">
+                    <h5 class="card-title mb-0">Advanced Search</h5>
+                </div>
+                <div class="card-body">
+                    <form id="advancedSearchForm">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-label">Category</label>
+                                    <select class="form-select">
+                                        <option value="">All Categories</option>
+                                        <option value="grains">Grains</option>
+                                        <option value="vegetables">Vegetables</option>
+                                        <option value="fruits">Fruits</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-label">Location</label>
+                                    <select class="form-select">
+                                        <option value="">All Locations</option>
+                                        <option value="north">North Region</option>
+                                        <option value="south">South Region</option>
+                                        <option value="east">East Region</option>
+                                        <option value="west">West Region</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-label">Price Range</label>
+                                    <select class="form-select">
+                                        <option value="">Any Price</option>
+                                        <option value="0-1000">₹0 - ₹1000</option>
+                                        <option value="1001-5000">₹1001 - ₹5000</option>
+                                        <option value="5001+">₹5001+</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-label">Search</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search products, farmers...">
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Overview Section -->
+        <section id="dashboard-overview" class="mb-4">
+            <div class="row">
+                <!-- Market Analysis Cards -->
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-primary">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <div>
+                                            <h6 class="text-muted">Supply & Demand</h6>
+                                            <h4 class="mb-0">Current Balance</h4>
+                                        </div>
+                                        <div class="bg-primary bg-opacity-10 rounded-circle p-3">
+                                            <i class="fas fa-balance-scale text-primary"></i>
+                                        </div>
+                                    </div>
+                                    <canvas id="supplyDemandMiniChart" height="150"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-success">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <div>
+                                            <h6 class="text-muted">Price Trends</h6>
+                                            <h4 class="mb-0">Market Prices</h4>
+                                        </div>
+                                        <div class="bg-success bg-opacity-10 rounded-circle p-3">
+                                            <i class="fas fa-chart-line text-success"></i>
+                                        </div>
+                                    </div>
+                                    <canvas id="priceTrendMiniChart" height="150"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-info">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <div>
+                                            <h6 class="text-muted">Storage Status</h6>
+                                            <h4 class="mb-0">Warehouse Capacity</h4>
+                                        </div>
+                                        <div class="bg-info bg-opacity-10 rounded-circle p-3">
+                                            <i class="fas fa-warehouse text-info"></i>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1">
+                                            <div class="progress" style="height: 10px;">
+                                                <div class="progress-bar bg-info" role="progressbar" style="width: 75%"></div>
+                                            </div>
+                                        </div>
+                                        <span class="ms-3 h4 mb-0">75%</span>
+                                    </div>
+                                    <small class="text-muted">Total Capacity: 10,000 tons</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-warning">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <div>
+                                            <h6 class="text-muted">Active Products</h6>
+                                            <h4 class="mb-0">Product Categories</h4>
+                                        </div>
+                                        <div class="bg-warning bg-opacity-10 rounded-circle p-3">
+                                            <i class="fas fa-box text-warning"></i>
+                                        </div>
+                                    </div>
+                                    <canvas id="productDistributionChart" height="150"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats and Actions -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-header bg-white">
+                            <h5 class="card-title mb-0">Quick Stats</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Total Products</h6>
+                                            <small class="text-muted">Active in market</small>
+                                        </div>
+                                        <h5 class="mb-0">1,234</h5>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Active Farmers</h6>
+                                            <small class="text-muted">Registered producers</small>
+                                        </div>
+                                        <h5 class="mb-0">456</h5>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Daily Transactions</h6>
+                                            <small class="text-muted">Last 24 hours</small>
+                                        </div>
+                                        <h5 class="mb-0">89</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="card">
+                        <div class="card-header bg-white">
+                            <h5 class="card-title mb-0">Quick Actions</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-plus-circle me-2"></i>Add New Product
+                                </button>
+                                <button class="btn btn-success">
+                                    <i class="fas fa-file-export me-2"></i>Export Report
+                                </button>
+                                <button class="btn btn-info">
+                                    <i class="fas fa-sync me-2"></i>Update Prices
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section id="dashboard" class="dashboard-section">
+            <div class="row mt-4">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Market Trends</h5>
+                            <th>Type</th>
+                            <th>Variety</th>
+                            <th>Sowing Time</th>
+                            <th>Transplanting</th>
+                            <th>Harvest Time</th>
+                            <th>Seeds/Acre</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Sample data - will be populated dynamically -->
+                        <tr>
+                            <td>1</td>
+                            <td>Rice</td>
+                            <td>Basmati</td>
+                            <td>June-July</td>
+                            <td>July-August</td>
+                            <td>November</td>
+                            <td>25 kg</td>
+                            <td><span class="badge bg-success">In Season</span></td>s="global-search">
+            <input type="text" class="search-input" placeholder="Search for products, farmers, markets, or prices...">
+            <i class="fas fa-search search-icon"></i>
+            <div class="search-results"></div>
+        </div>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="dashboard-section">
+            <h2>Dashboard</h2>
+            
+            <!-- Analytics Charts -->
+            <div class="row mt-4">
+                <div class="col-md-6 mb-4">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <div class="chart-title">Price Trends</div>
+                            <div class="chart-filters">
+                                <span class="chart-filter active">Week</span>
+                                <span class="chart-filter">Month</span>
+                                <span class="chart-filter">Year</span>
+                            </div>
+                        </div>
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <div class="chart-title">Supply vs Demand</div>
+                            <div class="chart-filters">
+                                <span class="chart-filter active">All</span>
+                                <span class="chart-filter">Rice</span>
+                                <span class="chart-filter">Wheat</span>
+                            </div>
+                        </div>
+                        <canvas id="supplyDemandChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">ad>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultural Demand and Supply Analysis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="#">AgriAnalytics</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#warehouses">Warehouses</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#market-analysis">Market Analysis</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#crop-database">Crop Database</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="container mt-4">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="dashboard-section">
+            <h2>Dashboard</h2>
+            <div class="row mt-4">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Products</h5>
+                            <p class="card-text display-4">150</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Active Warehouses</h5>
+                            <p class="card-text display-4">12</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Market Analysis</h5>
+                            <p class="card-text display-4">24</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Active Shipments</h5>
+                            <p class="card-text display-4">45</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="products-section mt-5">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Products Management</h2>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                    <i class="fas fa-plus"></i> Add Product
+                </button>
+            </div>
+            <div class="table-responsive mt-3">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Stock</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Sample data - will be populated dynamically -->
+                        <tr>
+                            <td>1</td>
+                            <td>Rice</td>
+                            <td>Grains</td>
+                            <td>1000 kg</td>
+                            <td><span class="badge bg-success">In Stock</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-info"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Warehouses Section -->
+        <section id="warehouses" class="warehouses-section mt-5">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Warehouse Management</h2>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addWarehouseModal">
+                    <i class="fas fa-plus"></i> Add Warehouse
+                </button>
+            </div>
+            <div class="row mt-3">
+                <!-- Sample Warehouse Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Warehouse #1</h5>
+                            <p class="card-text">
+                                <strong>Location:</strong> Chennai<br>
+                                <strong>Capacity:</strong> 5000 tons<br>
+                                <strong>Utilization:</strong> 75%
+                            </p>
+                            <div class="progress mb-3">
+                                <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                            </div>
+                            <button class="btn btn-sm btn-primary">Manage Inventory</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GDP and Nutrition Section -->
+        <section id="gdp-nutrition" class="gdp-nutrition-section mt-5">
+            <h2>Economic & Nutrition Analysis</h2>
+            <div class="row mt-3">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">GDP & Population Trends</h5>
+                            <canvas id="gdpChart"></canvas>
+                            <div class="mt-3">
+                                <small class="text-muted">Source: <span id="gdpSource">National Statistics</span></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Nutrition Value Analysis</h5>
+                            <canvas id="nutritionChart"></canvas>
+                            <div class="mt-3">
+                                <p class="mb-2">Annual Agricultural Demand: <span id="annualDemand">0</span></p>
+                                <p class="mb-0">Quantity Distribution: <span id="nutritionQuantity">0</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Analysis Section -->
+        <section id="market-analysis" class="market-analysis-section mt-5">
+            <h2>Market Analysis</h2>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Demand Trends</h5>
+                            <canvas id="demandChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Supply Trends</h5>
+                            <canvas id="supplyChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Crop Database Section -->
+        <section id="crop-database" class="crop-database-section mt-5 mb-5">
+            <h2>Crop Database</h2>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Crop Name</th>
+                                            <th>Season</th>
+                                            <th>Growth Period</th>
+                                            <th>Optimal Conditions</th>
+                                            <th>Expected Yield</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Sample data - will be populated dynamically -->
+                                        <tr>
+                                            <td>Wheat</td>
+                                            <td>Winter</td>
+                                            <td>120 days</td>
+                                            <td>15-25°C</td>
+                                            <td>3-4 tons/acre</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>AgriAnalytics</h5>
+                    <p>Your complete solution for agricultural demand and supply analysis.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5>Contact</h5>
+                    <p>Email: info@agrianalytics.com<br>Phone: (123) 456-7890</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add Product Modal -->
+    <div class="modal fade" id="addProductModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addProductForm">
+                        <div class="mb-3">
+                            <label class="form-label">Product Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <select class="form-select" required>
+                                <option value="">Select Category</option>
+                                <option value="grains">Grains</option>
+                                <option value="vegetables">Vegetables</option>
+                                <option value="fruits">Fruits</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Initial Stock</label>
+                            <input type="number" class="form-control" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" form="addProductForm" class="btn btn-primary">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Warehouse Modal -->
+    <div class="modal fade" id="addWarehouseModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Warehouse</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addWarehouseForm">
+                        <div class="mb-3">
+                            <label class="form-label">Storage ID</label>
+                            <input type="text" class="form-control" name="storageID" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Location</label>
+                            <input type="text" class="form-control" name="address" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Cold Storage Capacity (tons)</label>
+                                    <input type="number" step="0.01" class="form-control" name="coldStorageCapacity" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Current Stock Level</label>
+                                    <input type="number" step="0.01" class="form-control" name="stockLevel" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Product Types</label>
+                            <select class="form-select" name="productType" multiple required>
+                                <option value="Grains">Grains</option>
+                                <option value="Vegetables">Vegetables</option>
+                                <option value="Fruits">Fruits</option>
+                                <option value="Dairy">Dairy</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" form="addWarehouseForm" class="btn btn-primary">Add Warehouse</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Required Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

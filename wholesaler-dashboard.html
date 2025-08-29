@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wholesaler Dashboard - Agricultural System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-boxes me-2"></i>Wholesaler Dashboard
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#dashboard">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#bulk-orders">Bulk Orders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#storage">Storage</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#retailers">Retailers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#analytics">Analytics</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <span class="navbar-text me-3">
+                        <i class="fas fa-user-circle me-1"></i>
+                        Welcome, <span id="wholesalerName">ABC Wholesale</span>
+                    </span>
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user-cog me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-history me-2"></i>Activity Log</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="login.html"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid mt-4">
+        <!-- Overview Section -->
+        <section id="dashboard" class="mb-4">
+            <div class="row">
+                <!-- Stats Cards -->
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="card-title mb-1">Total Orders</h6>
+                                    <h2 class="mb-0">256</h2>
+                                    <small class="text-success"><i class="fas fa-arrow-up"></i> 12% this month</small>
+                                </div>
+                                <div class="icon-bg bg-primary text-white">
+                                    <i class="fas fa-shopping-cart fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="card-title mb-1">Revenue</h6>
+                                    <h2 class="mb-0">$52K</h2>
+                                    <small class="text-success"><i class="fas fa-arrow-up"></i> 8% this month</small>
+                                </div>
+                                <div class="icon-bg bg-success text-white">
+                                    <i class="fas fa-dollar-sign fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="card-title mb-1">Storage Usage</h6>
+                                    <h2 class="mb-0">75%</h2>
+                                    <small class="text-warning"><i class="fas fa-exclamation-triangle"></i> Near capacity</small>
+                                </div>
+                                <div class="icon-bg bg-warning text-white">
+                                    <i class="fas fa-warehouse fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="card-title mb-1">Active Retailers</h6>
+                                    <h2 class="mb-0">45</h2>
+                                    <small class="text-success"><i class="fas fa-arrow-up"></i> 5 new this month</small>
+                                </div>
+                                <div class="icon-bg bg-info text-white">
+                                    <i class="fas fa-store fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bulk Orders Management -->
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Recent Bulk Orders</h5>
+                            <button class="btn btn-primary btn-sm">
+                                <i class="fas fa-plus me-1"></i> New Order
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Retailer</th>
+                                            <th>Products</th>
+                                            <th>Quantity</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>#BLK001</td>
+                                            <td>SuperMart</td>
+                                            <td>Rice, Wheat</td>
+                                            <td>5000 kg</td>
+                                            <td>$12,500</td>
+                                            <td><span class="badge bg-warning">Pending</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-info"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <!-- More rows... -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Stock Alerts</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-warning">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                Rice stock below 20% (1000 kg remaining)
+                            </div>
+                            <div class="alert alert-danger">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                Wheat stock critically low (500 kg remaining)
+                            </div>
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                New stock arriving tomorrow
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Storage Management -->
+        <section id="storage" class="mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Storage Management</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Storage Capacity Usage</h6>
+                            <canvas id="storageChart"></canvas>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Product Distribution</h6>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Quantity</th>
+                                            <th>Space Used</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Rice</td>
+                                            <td>1000 kg</td>
+                                            <td>30%</td>
+                                        </tr>
+                                        <!-- More rows... -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section id="quick-actions" class="mb-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Quick Actions</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-plus me-2"></i> Create New Order
+                                </button>
+                                <button class="btn btn-success">
+                                    <i class="fas fa-sync me-2"></i> Update Inventory
+                                </button>
+                                <button class="btn btn-info">
+                                    <i class="fas fa-file-invoice me-2"></i> Generate Report
+                                </button>
+                                <button class="btn btn-warning">
+                                    <i class="fas fa-truck me-2"></i> Schedule Delivery
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Recent Activities</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <i class="fas fa-circle"></i>
+                                    <div class="timeline-content">
+                                        <h6>New order received</h6>
+                                        <p>Order #BLK002 from MegaMart</p>
+                                        <small>2 hours ago</small>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <i class="fas fa-circle"></i>
+                                    <div class="timeline-content">
+                                        <h6>Stock updated</h6>
+                                        <p>Added 2000kg of Rice</p>
+                                        <small>5 hours ago</small>
+                                    </div>
+                                </div>
+                                <!-- More timeline items... -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/wholesaler.js"></script>
+</body>
+</html>
