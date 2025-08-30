@@ -1,7 +1,7 @@
 <?php
 include "db.php";
 
-// ✅ Select actual columns from consumer table (no quotes around column names)
+
 $sql = "SELECT ConsumerID, Name, Contact, Email, Region, Address, feedback 
         FROM consumer";
 
