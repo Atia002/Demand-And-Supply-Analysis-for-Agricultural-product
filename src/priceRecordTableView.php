@@ -29,7 +29,6 @@ $result = $conn->query($sql);
                     <th>Price_Type</th>
                     <th>Product_Id</th>
                     <th>Price_Value</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
 

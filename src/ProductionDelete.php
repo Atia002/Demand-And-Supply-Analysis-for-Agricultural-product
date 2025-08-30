@@ -2,9 +2,9 @@
 
 include "db.php";
 
-if (isset($_GET['Batch No'])) {
+if (isset($_GET['Batch_No'])) {
 
-    $user_batchNo = $_GET['Batch No'];
+    $user_batchNo = $_GET['Batch_No'];
 
     $sql = "DELETE FROM `Production` WHERE `Batch No`='$user_batchNo";
     $result = $conn->query($sql);
