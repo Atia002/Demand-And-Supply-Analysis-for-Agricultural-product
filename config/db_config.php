@@ -1,20 +1,18 @@
 <?php
+
 $servername = "localhost";
+
 $username = "root";
+
 $password = "";
-$database = "agri_demand_supply";
 
-try {
-    $conn = new mysqli($servername, $username, $password, $database);
-    
-    if ($conn->connect_error) {
-        throw new Exception("Connection failed: " . $conn->connect_error);
-    }
-} catch (Exception $e) {
-    die("Connection error: " . $e->getMessage());
+$dbname = "demand_supply";
+
+$conn = new mysqli($servername, $username, $password, $dbname, 4306);
+
+if ($conn->connect_error) {
+
+    die("Connection failed: " . $conn->connect_error);
+} else {
+    echo "<script>console.log('Database Connected successfully');</script>";
 }
-
-// Enable error reporting for development
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-?>
