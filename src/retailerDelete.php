@@ -2,11 +2,11 @@
 
 include "db.php";
 
-if (isset($_GET['Batch_No'])) {
+if (isset($_GET['Store Type'])) {
 
-    $user_batchNo = $_GET['Batch_No'];
+    $user_storeType = $_GET['Store Type'];
 
-    $sql = "DELETE FROM `Production` WHERE `Batch No`='$user_batchNo";
+    $sql = "DELETE FROM `retailer` WHERE `Store Type`='$user_storeType'";
     $result = $conn->query($sql);
 
     if ($result == TRUE) {

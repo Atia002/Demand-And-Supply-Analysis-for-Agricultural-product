@@ -2,11 +2,11 @@
 
 include "db.php";
 
-if (isset($_GET['Batch_No'])) {
+if (isset($_GET['Price_Value'])) {
 
-    $user_batchNo = $_GET['Batch_No'];
+    $user_priceValue = $_GET['Price_Value'];
 
-    $sql = "DELETE FROM `Production` WHERE `Batch No`='$user_batchNo";
+    $sql = "DELETE FROM `price_record` WHERE `Price_Value`='user_priceValue'";
     $result = $conn->query($sql);
 
     if ($result == TRUE) {

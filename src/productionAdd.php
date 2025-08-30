@@ -3,19 +3,19 @@ include "db.php";
 
 if (isset($_POST['submit'])) {
 
-  $batchNo = $_POST['batchNo'];
+  $batchNo = $_POST['Batch_No'];
 
   $Year = $_POST['Year'];
 
-  $Season = $_POST['Saeson'];
+  $Season = $_POST['Season'];
 
-  $AcreAge = $_POST['AcreAge'];
+  $AcreAge = $_POST['AcerAge'];
 
   $Quantity = $_POST['Quantity'];
 
   
 
-  $sql = "INSERT INTO `Production`(`Batch no`, `Year`, `Season`, `AcerAge`, `Quantity`) VALUES ('$batchNo','$Year','$Season','$AcreAge','$Quantity')";
+  $sql = "INSERT INTO `Production`(`Batch_No`, `Year`, `Season`, `AcerAge`, `Quantity`) VALUES ('$batchNo','$Year','$Season','$AcreAge','$Quantity')";
 
   $result = $conn->query($sql);
 
@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
         <legend>Production Information:</legend>
 
         <div class="form-group">
-          <label for="batchNo">Batch No:</label>
+          <label for="Batch_No">Batch No:</label>
           <input type="text" class="form-control" name="batchNo" id="batchNo" required>
         </div>
 

@@ -2,7 +2,7 @@
 include "db.php";
 
 
-$sql = "SELECT 'Batch No' as batchNo , Year, Season, AcreAge, Quantity  FROM Production";
+$sql = "SELECT 'Batch_No' as batchNo , Year, Season, AcerAge, Quantity  FROM Production";
 
 $result = $conn->query($sql);
 
@@ -32,13 +32,13 @@ $result = $conn->query($sql);
             <thead>
 
                 <tr>
-                    <th>Batch No</th>
+                    <th>Batch_No</th>
 
                     <th>Year</th>
 
                     <th>Season</th>
 
-                    <th>AcreAge</th>
+                    <th>AcerAge</th>
 
                     <th>Quantity</th>
 
@@ -57,20 +57,20 @@ $result = $conn->query($sql);
 
                         <tr>
 
-                            <td><?php echo $row['batchNo']; ?></td>
+                            <td><?php echo $row['Batch_No']; ?></td>
 
                             <td><?php echo $row['Year']; ?></td>
 
                             <td><?php echo $row['Season']; ?></td>
 
-                            <td><?php echo $row['AcreAge']; ?></td>
+                            <td><?php echo $row['AcerAge']; ?></td>
 
                             <td><?php echo $row['Quantity']; ?></td>
 
                             
                             <td>
-                                <a class="btn btn-info" href="productionUpdate.php?id=<?php echo $row['Batch No']; ?>">Edit</a>&nbsp;
-                                <a class="btn btn-danger" href="ProductionDelete.php?id=<?php echo $row['Batch No']; ?>">Delete</a>
+                                <a class="btn btn-info" href="productionUpdate.php?id=<?php echo $row['Batch_No']; ?>">Edit</a>&nbsp;
+                                <a class="btn btn-danger" href="ProductionDelete.php?id=<?php echo $row['Batch_No']; ?>">Delete</a>
                             </td>
 
                         </tr>
