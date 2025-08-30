@@ -26,7 +26,7 @@ $result = $conn->query($sql);
                     <th>Weather_Id</th>
                     <th>Date</th>
                     <th>Temperature (°C)</th>
-                    <th>Action</th>
+                    
                 </tr>
             </thead>
 
