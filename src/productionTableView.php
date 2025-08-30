@@ -2,7 +2,7 @@
 include "db.php";
 
 
-$sql = "SELECT 'Batch_No' as batchNo , Year, Season, AcerAge, Quantity  FROM Production";
+$sql = "SELECT 'Batch_No' as batchNo , Year, Season, AcerAge, Quantity  FROM production";
 
 $result = $conn->query($sql);
 

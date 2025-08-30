@@ -16,7 +16,7 @@ if (isset($_POST['update'])) {
 
     
 
-    $sqlup = "UPDATE `Production` SET `Year`='$Year',`Season`='$Season',`AcreAge`='$AcreAge',`Quantity`='$Quantity ' WHERE `user_batchNo'='$user_batchN'";
+    $sqlup = "UPDATE `production` SET `Year`='$Year',`Season`='$Season',`AcreAge`='$AcreAge',`Quantity`='$Quantity ' WHERE `user_batchNo'='$user_batchN'";
 
     $result = $conn->query($sqlup);
 

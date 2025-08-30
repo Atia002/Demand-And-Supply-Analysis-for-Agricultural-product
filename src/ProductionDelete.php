@@ -6,7 +6,7 @@ if (isset($_GET['Batch_No'])) {
 
     $user_batchNo = $_GET['Batch_No'];
 
-    $sql = "DELETE FROM `Production` WHERE `Batch No`='$user_batchNo";
+    $sql = "DELETE FROM `production` WHERE `Batch No`='$user_batchNo";
     $result = $conn->query($sql);
 
     if ($result == TRUE) {

@@ -45,8 +45,8 @@ $result = $conn->query($sql);
                             <td><?php echo $row['RegDate']; ?></td>
                             <td><?php echo $row[' VendorType']; ?></td>
                             <td>
-                                <a class="btn btn-info" href="productionUpdate.php?id=<?php echo $row['recordId']; ?>">Edit</a>&nbsp;
-                                <a class="btn btn-danger" href="ProductionDelete.php?id=<?php echo $row['recordId']; ?>">Delete</a>
+                                <a class="btn btn-info" href="vendorUpdate.php?id=<?php echo $row['VendorType']; ?>">Edit</a>&nbsp;
+                                <a class="btn btn-danger" href="vendorDelete.php?id=<?php echo $row['VendorType']; ?>">Delete</a>
                             </td>
                         </tr>
                 <?php
@@ -58,7 +58,7 @@ $result = $conn->query($sql);
                 ?>
             </tbody>
         </table>
-        <a style="color:black;" class="btn btn-warning" href="productionAdd.php"><b>Add</b></a>
+        <a style="color:black;" class="btn btn-warning" href="vendorAdd.php"><b>Register Vendor</b></a>
     </div>
 
 </body>

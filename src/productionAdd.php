@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
 
   
 
-  $sql = "INSERT INTO `Production`(`Batch_No`, `Year`, `Season`, `AcerAge`, `Quantity`) VALUES ('$batchNo','$Year','$Season','$AcreAge','$Quantity')";
+  $sql = "INSERT INTO `production`(`Batch_No`, `Year`, `Season`, `AcerAge`, `Quantity`) VALUES ('$batchNo','$Year','$Season','$AcreAge','$Quantity')";
 
   $result = $conn->query($sql);
 

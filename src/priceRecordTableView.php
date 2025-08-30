@@ -44,8 +44,8 @@ $result = $conn->query($sql);
                             <td><?php echo $row['productId']; ?></td>
                             <td><?php echo $row['priceValue']; ?></td>
                             <td>
-                                <a class="btn btn-info" href="productionUpdate.php?id=<?php echo $row['recordId']; ?>">Edit</a>&nbsp;
-                                <a class="btn btn-danger" href="ProductionDelete.php?id=<?php echo $row['recordId']; ?>">Delete</a>
+                                <a class="btn btn-info" href="priceRecordUpdate.php?id=<?php echo $row['Price_Value']; ?>">Edit</a>&nbsp;
+                                <a class="btn btn-danger" href="priceRecordDelete.php?id=<?php echo $row['Price_Value']; ?>">Delete</a>
                             </td>
                         </tr>
                 <?php
@@ -57,7 +57,7 @@ $result = $conn->query($sql);
                 ?>
             </tbody>
         </table>
-        <a style="color:black;" class="btn btn-warning" href="productionAdd.php"><b>Add</b></a>
+        <a style="color:black;" class="btn btn-warning" href="priceRecordAdd.php"><b>Add Price Record</b></a>
     </div>
 
 </body>
