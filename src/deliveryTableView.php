@@ -57,7 +57,7 @@ $result = $conn->query($sql);
             </tbody>
         </table>
 
-        <a style="color:black;" class="btn btn-warning" href="deliveryAdd.php"><b>Add Delivery</b></a>
+        <a style="color:black;" class="btn btn-warning" href="deliveryAdd.php"><b>Create Delivery</b></a>
     </div>
 </body>
 </html>
