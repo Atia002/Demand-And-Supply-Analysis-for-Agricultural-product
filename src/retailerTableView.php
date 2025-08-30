@@ -38,8 +38,8 @@ $result = $conn->query($sql);
                             <td><?php echo $row['StoreType']; ?></td>
                                                        
                             <td>
-                                <a class="btn btn-info" href="productionUpdate.php?id=<?php echo $row['recordId']; ?>">Edit</a>&nbsp;
-                                <a class="btn btn-danger" href="ProductionDelete.php?id=<?php echo $row['recordId']; ?>">Delete</a>
+                                <a class="btn btn-info" href="retailerUpdate.php?id=<?php echo $row['Store Type']; ?>">Edit</a>&nbsp;
+                                <a class="btn btn-danger" href="retailerDelete.php?id=<?php echo $row['Store Type']; ?>">Delete</a>
                             </td>
                         </tr>
                 <?php
@@ -51,7 +51,7 @@ $result = $conn->query($sql);
                 ?>
             </tbody>
         </table>
-        <a style="color:black;" class="btn btn-warning" href="productionAdd.php"><b>Add</b></a>
+        <a style="color:black;" class="btn btn-warning" href="retailerAdd.php"><b>Add Retailer</b></a>
     </div>
 
 </body>
