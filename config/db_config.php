@@ -6,9 +6,9 @@ $username = "root";
 
 $password = "";
 
-$dbname = "demand_supply";
+$dbname = "supply_demand";
 
-$conn = new mysqli($servername, $username, $password, $dbname, 4306);
+$conn = new mysqli($servername, $username, $password, $dbname, 80);
 
 if ($conn->connect_error) {
 
