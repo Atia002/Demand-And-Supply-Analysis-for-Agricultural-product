@@ -8,7 +8,7 @@ $password = "";
 
 $dbname = "supply_demand";
 
-$conn = new mysqli($servername, $username, $password, $dbname, 5500
+$conn = new mysqli($servername, $username, $password, $dbname, port: 5500
 );
 
 if ($conn->connect_error) {
