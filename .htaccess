@@ -1,0 +1,26 @@
+RewriteEngine On
+
+# Handle requests for assets
+RewriteCond %{REQUEST_URI} ^/Demand-And-Supply-Analysis-for-Agricultural-product/public/assets/
+RewriteRule ^public/assets/(.*)$ public/assets/$1 [L]
+
+# Route API requests
+RewriteCond %{REQUEST_URI} ^/Demand-And-Supply-Analysis-for-Agricultural-product/api/
+RewriteRule ^api/(.*)$ src/api.php?path=$1 [QSA,L]
+
+# Route all other requests to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ public/router.php [QSA,L]
+
+# Handle requests to the root URL
+RewriteRule ^$ public/index.php [L]
+
+# Handle requests for assets and existing files/directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ public/index.php [QSA,L]
+
+# PHP error handling
+php_flag display_errors on
+php_value error_reporting E_ALL

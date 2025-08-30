@@ -1,57 +1,117 @@
 <?php
-require_once 'config/db_connect.php';
-
-// Check if user is logged in
+// Start the session
 session_start();
-if (!isset($_SESSION['user_id'])) {
+
+// Check if user is logged in and is a farmer
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'farmer') {
     header('Location: login.php');
     exit();
 }
 
-// Get user role and information
+// Get user information
 $userId = $_SESSION['user_id'];
-$userRole = $_SESSION['role'];
 
-// Get farmer information if user is a farmer
-$farmerInfo = null;
-if ($userRole === 'farmer') {
-    $stmt = $conn->prepare("SELECT * FROM farmer WHERE farmer_id = ?");
-    $stmt->bind_param("i", $userId);
-    $stmt->execute();
-    $farmerInfo = $stmt->get_result()->fetch_assoc();
-}
+// Include database connection
+require_once 'db.php';
 
-// Get farm information
-$farms = array();
-if ($farmerInfo) {
-    $stmt = $conn->prepare("SELECT * FROM farm WHERE farmer_id = ?");
-    $stmt->bind_param("i", $userId);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    while ($row = $result->fetch_assoc()) {
+// $conn is initialized in db.php, if there was an error, 
+// the script would have already redirected to error.php
+
+try {
+    if (!$conn) {
+        throw new Exception("Database connection not available");
+    }
+
+    // Get farmer information
+    $query = "SELECT * FROM farmer WHERE farmer_id = ?";
+    $stmt = $conn->prepare($query);
+    if (!$stmt) {
+        throw new Exception("Prepare failed: " . $conn->error);
+    }
+    
+    if (!$stmt->bind_param("i", $userId)) {
+        throw new Exception("Binding parameters failed: " . $stmt->error);
+    }
+    
+    if (!$stmt->execute()) {
+        throw new Exception("Execute failed: " . $stmt->error);
+    }
+    
+    $farmerResult = $stmt->get_result();
+    if (!$farmerResult) {
+        throw new Exception("Failed to get farmer result");
+    }
+    
+    $farmerInfo = $farmerResult->fetch_assoc();
+    $stmt->close();
+
+    if (!$farmerInfo) {
+        throw new Exception("Farmer information not found");
+    }
+
+    // Get farm information
+    $farms = array();
+    $query = "SELECT * FROM farm WHERE farmer_id = ?";
+    $stmt = $conn->prepare($query);
+    if (!$stmt) {
+        throw new Exception("Prepare failed: " . $conn->error);
+    }
+    
+    if (!$stmt->bind_param("i", $userId)) {
+        throw new Exception("Binding parameters failed: " . $stmt->error);
+    }
+    
+    if (!$stmt->execute()) {
+        throw new Exception("Execute failed: " . $stmt->error);
+    }
+    
+    $farmResult = $stmt->get_result();
+    if (!$farmResult) {
+        throw new Exception("Failed to get farm result");
+    }
+    
+    while ($row = $farmResult->fetch_assoc()) {
         $farms[] = $row;
     }
-}
+    $stmt->close();
 
-// Get production information
-$productions = array();
-if ($farmerInfo) {
-    $stmt = $conn->prepare("SELECT p.*, pr.name as product_name 
-                           FROM production p 
-                           JOIN product pr ON p.product_id = pr.product_id 
-                           WHERE p.farmer_id = ?");
-    $stmt->bind_param("i", $userId);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    while ($row = $result->fetch_assoc()) {
+    // Get production information
+    $productions = array();
+    $query = "SELECT p.*, pr.name as product_name 
+              FROM production p 
+              JOIN product pr ON p.product_id = pr.product_id 
+              WHERE p.farmer_id = ?";
+    $stmt = $conn->prepare($query);
+    if (!$stmt) {
+        throw new Exception("Prepare failed: " . $conn->error);
+    }
+    
+    if (!$stmt->bind_param("i", $userId)) {
+        throw new Exception("Binding parameters failed: " . $stmt->error);
+    }
+    
+    if (!$stmt->execute()) {
+        throw new Exception("Execute failed: " . $stmt->error);
+    }
+    
+    $productionResult = $stmt->get_result();
+    if (!$productionResult) {
+        throw new Exception("Failed to get production result");
+    }
+    
+    while ($row = $productionResult->fetch_assoc()) {
         $productions[] = $row;
     }
+    $stmt->close();
+
+} catch (Exception $e) {
+    // Log the error and show user-friendly message
+    error_log("Error in farmer-dashboard.php: " . $e->getMessage());
+    $_SESSION['error_message'] = "An error occurred while loading the dashboard. Please try again later.";
+    header('Location: error.php');
+    exit();
 }
-
-// Close database connection
-$conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,6 +126,26 @@ $conn->close();
     <?php include 'includes/header.php'; ?>
     
     <main class="container mt-4">
+        <?php if (isset($_SESSION['success_message'])): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <?php 
+                    echo htmlspecialchars($_SESSION['success_message']); 
+                    unset($_SESSION['success_message']);
+                ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['error_message'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?php 
+                    echo htmlspecialchars($_SESSION['error_message']); 
+                    unset($_SESSION['error_message']);
+                ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        <?php endif; ?>
+
         <h1>Welcome, <?php echo htmlspecialchars($farmerInfo['name']); ?></h1>
         
         <!-- Farmer Information -->
@@ -186,7 +266,8 @@ $conn->close();
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="addFarmForm">
+                    <form id="addFarmForm" action="handlers/farmer_handler.php" method="POST">
+                        <input type="hidden" name="action" value="add_farm">
                         <div class="mb-3">
                             <label class="form-label">Farm Address</label>
                             <textarea class="form-control" name="address" required></textarea>
@@ -210,11 +291,12 @@ $conn->close();
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="addProductionForm">
+                    <form id="addProductionForm" action="handlers/farmer_handler.php" method="POST">
+                        <input type="hidden" name="action" value="add_production">
                         <div class="mb-3">
                             <label class="form-label">Product</label>
                             <select class="form-select" name="product_id" required>
-                                <!-- Products will be loaded dynamically -->
+                                <!-- Products will be loaded dynamically via JavaScript -->
                             </select>
                         </div>
                         <div class="mb-3">
@@ -251,3 +333,9 @@ $conn->close();
     <script src="js/farmer-dashboard.js"></script>
 </body>
 </html>
+<?php 
+// Close the database connection if it exists
+if ($conn) {
+    $conn->close();
+}
+?>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once __DIR__ . '/init.php';
 $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 <!DOCTYPE html>

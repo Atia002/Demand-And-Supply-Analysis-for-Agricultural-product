@@ -1,7 +1,5 @@
 <?php
-require_once 'config/db_connect.php';
-
-session_start();
+require_once 'includes/init.php';
 
 $error = '';
 
@@ -9,24 +7,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
     
-    // Add your user authentication logic here
-    // For example, check against farmer, vendor, or admin tables
+    // Try farmer login first
+    $query = "SELECT farmer_id as id, name, 'farmer' as role, contact 
+              FROM farmer 
+              WHERE contact = :username AND password = :password";
     
-    $query = "SELECT f.farmer_id, f.name, 'farmer' as role 
-              FROM farmer f 
-              WHERE f.contact = ? AND f.password = ?
-              UNION
-              SELECT v.license_id, v.name, v.vendor_type as role
-              FROM vendor v
-              WHERE v.contact = ? AND v.password = ?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([
+        ':username' => $username,
+        ':password' => $password
+    ]);
+    $user = $stmt->fetch();
+
+    // If not found, try vendor login
+    if (!$user) {
+        $query = "SELECT v.license_id as id, v.name, v.vendor_type as role, v.contact
+                  FROM vendor v 
+                  WHERE v.license_id = :username AND v.password = :password";
+        
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([
+            ':username' => $username,
+            ':password' => $password
+        ]);
+        $user = $stmt->fetch();
+    }
     
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssss", $username, $password, $username, $password);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows === 1) {
-        $user = $result->fetch_assoc();
+    if ($user = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $_SESSION['user_id'] = $user['farmer_id'] ?? $user['license_id'];
         $_SESSION['user_name'] = $user['name'];
         $_SESSION['role'] = $user['role'];
